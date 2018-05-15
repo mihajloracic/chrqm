@@ -4,10 +4,12 @@ import m.e.c.r.model.Cpu;
 import m.e.c.r.model.Game;
 import m.e.c.r.model.Gpu;
 import m.e.c.r.model.Manufacturor;
+import m.e.c.r.model.dto.ResponseDto;
 import m.e.c.r.repository.CpuRepository;
 import m.e.c.r.repository.GameRepository;
 import m.e.c.r.repository.GpuRepository;
 import m.e.c.r.repository.ManufacturorRepository;
+import m.e.c.r.service.ReponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,8 @@ public class HomeController {
     GpuRepository gpuRepository;
     @Autowired
     GameRepository gamRepository;
-
+    @Autowired
+    ReponseService reponseService;
     @GetMapping(value = "/poz")
     public String helloWorld(){
         return "Hello word";
@@ -51,8 +54,8 @@ public class HomeController {
     }
 
     @GetMapping(value = "/check")
-    public String getRunIt(@RequestParam Long gpuId, @RequestParam Long cpuId, @RequestParam Long gameId){
-        return "hello word" + gpuId+ " " + gameId+ " "  +cpuId;
+    public ResponseDto getRunIt(@RequestParam Long gpuId, @RequestParam Long cpuId, @RequestParam Long gameId,@RequestParam String ram){
+        return reponseService.getEvaluation(gameId,cpuId,gpuId,Integer.parseInt(ram));
     }
 
 }

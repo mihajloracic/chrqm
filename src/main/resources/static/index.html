@@ -19,7 +19,6 @@
         <div class="form-group">
             <label for="gpuHolder">Select your GPU</label>
             <select class="form-control" id="gpuHolder">
-
             </select>
             <br>
             <label for="cpuHolder">Select your CPU</label>
@@ -28,7 +27,6 @@
             <br>
             <label for="gameHolder">Select game you want to play</label>
             <select class="form-control" id="gameHolder">
-
             </select>
             <br>
             <label for="ramAmount">GB of ram</label>
@@ -40,7 +38,6 @@
 </div>
         <script>
             $(document).ready(function(){
-
                 $.get("/gpu", function(data, status){
                     data.forEach(function(element) {
                         $("#gpuHolder").append("<option value='"+element.id+"'>"+element.model+"</option>");
@@ -60,16 +57,15 @@
                     gId = $("#gpuHolder").val();
                     cId =$("#cpuHolder").val();
                     ggId = $("#gameHolder").val();
-                    $.get("/check?gpuId="+ gId +"&cpuId="+ cId +"&gameId=" + ggId
+                    ramAmounts = $("#ramAmount").val();
+                    $.get("/check?gpuId="+ gId +"&cpuId="+ cId +"&gameId=" + ggId+"&ram="+ramAmounts
                         ,
                         function(data, status){
                             alert("Data: " + data + "\nStatus: " + status);
                         });
                 });
             });
-
         </script>
-
 </body>
 
 </html>

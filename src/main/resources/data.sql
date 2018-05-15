@@ -50,5 +50,27 @@ INSERT INTO cpus(id,model,cache_,clock,cores,manufacturor_id,class_) VALUES
 
 
 INSERT into games(id,name_,mgc,rgc,mcc,rcc,mr,rr) VALUES
-  (1,'GTA V',8,9,9,9,1024,2048),
-  (2,'Civilization VI',8,9,9,9,1024,2048)
+  (1,'GTA V',4,7,6,9,4096,8192),
+  (2,'Civilization VI',4,8,6,9,1024,2048),
+  (3,'PlayerUnknowns Battlegrounds',6,10,7,9,2048,8192),
+  (4,'Far Cry 5',7,10,6,10,8192,16384),
+  (5,'State Of Decay 2',7,8,8,10,8192,16384),
+  (6,'Final Fantasy XV',8,10,7,10,8192,16384),
+  (7,'Conan Exiles',7,8,7,8,2048,8192),
+  (8,'The Crew 2',6,10,9,10,8192,16384),
+  (9,'Fortnite',2,7,6,7,4096,8192),
+  (10,'Counter-Strike: Global Offensive',2,6,6,6,4096,8192),
+  (11,'FIFA 18',6,8,6,7,8192,8192),
+  (12,'Assassins Creed: Origins',7,9,7,9,4096,8192),
+  (13,'DOTA 2',2,2,5,5,2048,4096),
+  (14,'Overwatch',4,7,6,6,4096,8192),
+  (15,'Forza Horizon 3',6,10,9,10,8192,16384),
+  (16,'Destiny 2',6,10,7,8,4096,8192),
+  (17,'Watch Dogs 2',7,9,7,8,4096,8192),
+  (18,'The Witcher III',7,9,7,9,4096,8192),
+  (19,'Rust',5,10,4,10,8192,16384),
+  (20,'Vampyr',7,10,6,10,8192,16384),
+  (21,'ArmA III',2,3,5,5,2048,4096),
+  (22,'Star Wars: Battlefront 2',6,10,8,10,8192,16384),
+  (23,'WWE 2K18',6,10,9,10,4096,8192),
+  (24,'Tekken 7',7,10,7,10,4096,8192);
