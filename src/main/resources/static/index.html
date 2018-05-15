@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+        <select id="gpuHolder">
+
+        </select>
+        <select id="cpuHolder">
+
+        </select>
+        <select id="gameHolder">
+
+        </select>
+        <button id="check">Can i run it?</button>
+    </div>
+        <script>
+            $(document).ready(function(){
+                $.get("/gpu", function(data, status){
+                    data.forEach(function(element) {
+                        $("#gpuHolder").append("<option value='"+element.id+"'>"+element.model+"</option>");
+                    });
+                });
+                $.get("/cpu", function(data, status){
+                    data.forEach(function(element) {
+                        $("#cpuHolder").append("<option value='"+element.id+"'>"+element.model+"</option>");
+                    });
+                });
+                $.get("/games", function(data, status){
+                    data.forEach(function(element) {
+                        $("#gameHolder").append("<option value='"+element.id+"'>"+element.nameVal+"</option>");
+                    });
+                });
+                $("#check").click(function () {
+                    gId = $("#gpuHolder").val();
+                    cId =$("#cpuHolder").val();
+                    ggId = $("#gameHolder").val();
+                    $.get("/check?gpuId="+ gId +"&cpuId="+ cId +"&gameId=" + ggId
+                        ,
+                        function(data, status){
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                });
+            });
+
+        </script>
+
+</body>
+
+</html>
