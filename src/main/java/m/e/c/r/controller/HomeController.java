@@ -9,7 +9,6 @@ import m.e.c.r.repository.GameRepository;
 import m.e.c.r.repository.GpuRepository;
 import m.e.c.r.repository.ManufacturorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class HomeController {
     @Autowired
     GpuRepository gpuRepository;
     @Autowired
-    GameRepository gameRepository;
+    GameRepository gamRepository;
 
     @GetMapping(value = "/poz")
     public String helloWorld(){
@@ -43,7 +42,7 @@ public class HomeController {
 
     @GetMapping(value = "/games")
     public List<Game> getGames(){
-        return gameRepository.findAll();
+        return gamRepository.findAll();
     }
 
     @GetMapping(value = "/manufacturors")
