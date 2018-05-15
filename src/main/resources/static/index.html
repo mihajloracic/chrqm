@@ -11,19 +11,35 @@
 
 </head>
 <body>
-        <select id="gpuHolder">
+<div class="container">
+    <h2>Can I run this game?</h2>
+    <p>Select your hardware and the game you want to play</p>
+    <form>
+        <div class="form-group">
+            <label for="gpuHolder">Select your GPU</label>
+            <select class="form-control" id="gpuHolder">
 
-        </select>
-        <select id="cpuHolder">
+            </select>
+            <br>
+            <label for="cpuHolder">Select your CPU</label>
+            <select class="form-control" id="cpuHolder">
+            <br>
+            </select>
+            <label for="gameHolder">Select game you want to play</label>
+            <select class="form-control" id="gameHolder">
 
-        </select>
-        <select id="gameHolder">
-
-        </select>
-        <button id="check">Can i run it?</button>
-    </div>
+            </select>
+            <br>
+            <label for="ramAmount">GB of ram</label>
+            <input type="number" class="form-control" id="ramAmount" placeholder="16">
+            <br>
+            <button type="button" class="btn btn-primary" id="check">Can i run it?</button>
+        </div>
+    </form>
+</div>
         <script>
             $(document).ready(function(){
+
                 $.get("/gpu", function(data, status){
                     data.forEach(function(element) {
                         $("#gpuHolder").append("<option value='"+element.id+"'>"+element.model+"</option>");
