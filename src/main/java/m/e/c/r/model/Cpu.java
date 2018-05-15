@@ -13,7 +13,7 @@ public class Cpu {
     @JoinColumn(name = "manufacturor_id", nullable = false)
     Manufacturor manufacturor;
     @Column(name = "cache_")
-    int ram;
+    float ram;
     @Column(name = "clock")
     float clock;
     @Column(name = "cores")
@@ -53,11 +53,11 @@ public class Cpu {
         this.manufacturor = manufacturor;
     }
 
-    public int getRam() {
+    public float getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(float ram) {
         this.ram = ram;
     }
 
