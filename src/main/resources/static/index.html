@@ -33,11 +33,66 @@
             <input type="number" class="form-control" id="ramAmount" placeholder="16">
             <br>
             <button type="button" class="btn btn-primary" id="check">Can i run it?</button>
+
         </div>
     </form>
+    <div class="container" id="resultContainer">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="jumbotron">
+                    <h3>Minimal requirements</h3>
+                </div>
+                <div id="mcs" class="alert alert-success message">
+                    <strong>CPU</strong> Meets requirements
+                </div>
+                <div id="mce" class="alert alert-danger message">
+                    <strong>CPU</strong> Doesn't meet requirements
+                </div>
+                <div id="mgs" class="alert alert-success message">
+                    <strong>GPU</strong> Meets requirements
+                </div>
+                <div id="mge" class="alert alert-danger message">
+                    <strong>GPU</strong> Doesn't meet requirements
+                </div>
+                <div id="mrs" class="alert alert-success message">
+                    <strong>RAM</strong> Meets requirements
+                </div>
+                <div id="mre" class="alert alert-danger message">
+                    <strong>RAM</strong> Doesn't meet requirements
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <div class="jumbotron">
+                    <h3>Recommended requirements</h3>
+                </div>
+                <div id="rcs" class="alert alert-success message">
+                    <strong>CPU</strong> Meets requirements
+                </div>
+                <div id="rce" class="alert alert-danger message">
+                    <strong>CPU</strong> Doesn't meet requirements
+                </div>
+                <div id="rgs" class="alert alert-success message">
+                    <strong>GPU</strong> Meets requirements
+                </div>
+                <div id="rge" class="alert alert-danger message">
+                    <strong>GPU</strong> Doesn't meet requirements
+                </div>
+                <div id="rrs" class="alert alert-success message">
+                    <strong>RAM</strong> Meets requirements
+                </div>
+                <div id="rre" class="alert alert-danger message">
+                    <strong>RAM</strong> Doesn't meet requirements
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
         <script>
             $(document).ready(function(){
+                $("#resultContainer").hide();
                 $.get("/gpu", function(data, status){
                     data.forEach(function(element) {
                         $("#gpuHolder").append("<option value='"+element.id+"'>"+element.model+"</option>");
@@ -61,7 +116,40 @@
                     $.get("/check?gpuId="+ gId +"&cpuId="+ cId +"&gameId=" + ggId+"&ram="+ramAmounts
                         ,
                         function(data, status){
-                            alert("Data: " + data + "\nStatus: " + status);
+                            $("#resultContainer").show();
+                            $(".message").hide();
+                            console.log(data);
+                            if(data.minimal.cpu){
+                                $("#mcs").show();
+                            }else{
+                                $("#mce").show();
+                            }
+                            if(data.minimal.gpu){
+                                $("#mgs").show();
+                            }else{
+                                $("#mge").show();
+                            }
+                            if(data.minimal.ram){
+                                $("#mrs").show();
+                            }else{
+                                $("#mre").show();
+                            }
+
+                            if(data.recommneden.cpu){
+                                $("#rcs").show();
+                            }else{
+                                $("#rce").show();
+                            }
+                            if(data.recommneden.gpu){
+                                $("#rgs").show();
+                            }else{
+                                $("#rge").show();
+                            }
+                            if(data.recommneden.ram){
+                                $("#rrs").show();
+                            }else{
+                                $("#rre").show();
+                            }
                         });
                 });
             });

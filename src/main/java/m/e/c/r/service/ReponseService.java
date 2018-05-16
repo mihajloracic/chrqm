@@ -27,7 +27,7 @@ public class ReponseService {
         Game game =gamRepository.findById(gameId).get();
         Cpu cpu = cpuRepository.findById(cpuId).get();
         Gpu gpu = gpuRepository.findById(gpuId).get();
-        InfoDto infoDtoMinimal = new InfoDto(game.getMinimalCpuClass() <= cpu.getClass_(),game.getMinimalGpuClass() <= gpu.getClass_(),game.getMinRam() <= ram);
+        InfoDto infoDtoMinimal = new InfoDto(game.getMinimalCpuClass() <= cpu.getClass_(),game.getMinimalGpuClass() <= gpu.getClass_(),game.getMinRam()/1024 <= ram);
         InfoDto infoDtoRecommended = new InfoDto(game.getRecommnedCpuClass() <= cpu.getClass_(),game.getRecommendedGpuClass() <= gpu.getClass_(),game.getRecommendedRam()/1024 <= ram);
         return new ResponseDto(infoDtoMinimal,infoDtoRecommended);
     }
